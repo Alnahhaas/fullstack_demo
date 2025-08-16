@@ -2,7 +2,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Allow cross-origin requests (needed for frontend)
+
+# Allow only frontend-service inside the cluster
+CORS(app, resources={r"/square": {"origins": "*"}})
+
+# seting for production
+# origins=["https://alnahhas_demo.com","http://alnahhas_demo.com"]
+# CORS(app, resources={r"/square": {"origins": origins}})
 
 @app.route('/square', methods=['POST'])
 def square_number():

@@ -8,7 +8,7 @@ provider "helm" {
   }
 }
 
-resource "helm_release" "sonnen_1st" {
+resource "helm_release" "fullstack_demo" {
   name       = "sonnen1st"
   chart      = "../helm-chart" 
   namespace  = "default"
