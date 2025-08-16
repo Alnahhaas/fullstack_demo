@@ -1,14 +1,21 @@
-# Custom NGINX Web App Kubernetes Deployment
+# Fullstack Demo 🚀
 
-This project demonstrates how to deploy a custom NGINX web application to a Kubernetes cluster using Docker, Helm, Terraform, and GitHub Actions.
+This is a simple **Fullstack project** built with:  
+- **Frontend:** Vue.js (Nuxt) served with **NGINX** inside Docker  
+- **Backend:** Python (Flask) running inside Docker  
+- **Containerization & Deployment:** Docker & Docker Compose / Helm  
 
-## Features
+---
 
-- Custom NGINX Docker image serving a custom `index.html` page  
-- Helm chart to package and deploy the app to Kubernetes  
-- Terraform code to automate Helm deployment  
-- GitHub Actions workflow to build Docker image, push to Docker Hub, and deploy to Kubernetes cluster on every push  
+## 📌 Features
+- Input a number in the frontend and send it to the backend.  
+- Backend computes the square (number²) and returns the result.  
+- Frontend displays the computed result dynamically.  
+- Containers are isolated:  
+  - `nginx_vue` → frontend  
+  - `flask_backend` → backend  
 
+---
 ## Prerequisites
 
 - Docker installed and running  
@@ -17,6 +24,46 @@ This project demonstrates how to deploy a custom NGINX web application to a Kube
 - Terraform installed   
 - Docker Hub account for image push  
 - GitHub repository with secrets set: `DOCKER_USERNAME`, `DOCKER_PASSWORD`
+
+## 🐳 Docker Setup
+
+### Build Images
+review the README files in each docker folder (backend_docker, frontend_docker)
+
+### Run Containers
+```bash
+# Run backend
+docker run -d -p 5000:5000 hassanalnahhaas/fullstack_demo_backend:latest
+
+# Run frontend
+docker run -d -p 8080:80 hassanalnahhaas/fullstack_nginx_vue:latest
+```
+
+---
+
+## 🛠 Project Structure
+```
+full_stack/
+│
+├── backend/              # Flask backend source code
+│   ├── app.py
+│   └── requirements.txt
+│
+├── frontend/             # Vue.js (Nuxt) frontend source code
+│   └── ...
+│
+├── backend_docker/       # Dockerfile + infra for backend
+│   └── Dockerfile
+│
+├── frontend_docker/      # Dockerfile + infra for frontend
+│   └── Dockerfile
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
 
 ## Why Minikube was chosen
 - Minikube is a lightweight tool for running a Kubernetes cluster, easy to install, and specifically designed for local development and testing.
@@ -47,10 +94,3 @@ This project demonstrates how to deploy a custom NGINX web application to a Kube
    ```bash
    kubectl port-forward svc/sonnen1st 8080:80 #Then open http://localhost:8080 in your browser.
    ```
-
-## Possible Improvements
-
-In the future, the Helm chart could be replaced with Kustomize for simpler and more native Kubernetes configuration management for the following reasons:
-- Kustomize is built into kubectl (no separate install required).
-- Easier to manage overlays for different environments.
-- Reduces complexity for small-scale deployments.
