@@ -1,0 +1,14 @@
+# Use stable and lightweight NGINX image
+FROM nginx:stable-alpine
+
+# Remove default welcome page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy built Nuxt/Vue static files into Nginx web root
+COPY ./frontend/.output/public /usr/share/nginx/html
+
+# Expose HTTP port
+EXPOSE 80
+
+# Start NGINX in the foreground
+CMD ["nginx", "-g", "daemon off;"]

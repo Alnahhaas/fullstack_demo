@@ -1,0 +1,4 @@
+## you sould run the dockerfile like so:
+- cd FULL_STACK project
+- docker build -f frontend_docker/Dockerfile -t alnahhaas/fullstack_demo_frontend:latest .
+- docker push alnahhaas/fullstack_demo_frontend:latest
