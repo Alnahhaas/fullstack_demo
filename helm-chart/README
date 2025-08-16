@@ -6,6 +6,6 @@ kubectl get pods
 kubectl delete svc frontend-service
 kubectl delete svc backend-service
 
-kubectl expose pod myapp-backend-5f8f9f69c4-bnwz7 --type=ClusterIP --name=backend-service --port=5000
-kubectl expose pod myapp-frontend-5548f9c889-dqwsb --type=NodePort --name=frontend-service --port=80
+kubectl expose pod myapp-backend-5f8f9f69c4-tppv9 --type=ClusterIP --name=backend-service --port=5000
+kubectl expose pod myapp-frontend-5548f9c889-tlfqb --type=NodePort --name=frontend-service --port=80
 kubectl port-forward svc/frontend-service 8080:80
