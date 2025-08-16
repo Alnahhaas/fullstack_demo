@@ -1,0 +1,9 @@
+## to create new deployment using kustomize you have to delete the old helm deployment sothat you can use the same deployment name
+## using the following command to delete the file 
+- kubectl delete deployment sonnen1st
+- kubectl delete svc sonnen1st
+
+## then following command shall be added 
+- cd kustomize
+- kubectl apply -k base
+- kubectl port-forward svc/sonnen1st 8080:80 

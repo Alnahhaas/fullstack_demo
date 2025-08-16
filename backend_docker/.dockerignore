@@ -1,0 +1,28 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore environment/config files that shouldn't go in the image
+*.env
+.env.*
+
+# Ignore Git and related files
+.git
+.gitignore
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore IDE/editor settings
+.vscode/
+.idea/
+
+# Ignore build artifacts
+build/
+*.egg-info/

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonnen1st
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonnen1st
+  template:
+    metadata:
+      labels:
+        app: sonnen1st
+    spec:
+      containers:
+        - name: sonnen1st
+          image: alnahhaas/sonnen_1st:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources: {}
+          volumeMounts: []
+      volumes: []
