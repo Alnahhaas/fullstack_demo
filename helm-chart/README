@@ -3,9 +3,12 @@ run those commands to allow using the app:
 helm uninstall myapp
 helm install myapp ./helm-chart
 kubectl get pods
+kubectl get svc
+kubectl get ingress
+
 kubectl delete svc frontend-service
 kubectl delete svc backend-service
 
-kubectl expose pod myapp-backend-5f8f9f69c4-6jzz6 --type=ClusterIP --name=backend-service --port=5000
+kubectl expose pod myapp-backend-5f8f9f69c4-gqx5k --type=ClusterIP --name=backend-service --port=5000
 kubectl expose pod myapp-frontend-5548f9c889-745l4 --type=NodePort --name=frontend-service --port=80
 kubectl port-forward svc/frontend-service 8080:80

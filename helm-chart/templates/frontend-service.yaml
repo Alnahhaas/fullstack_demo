@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: fullstack-frontend
+  labels:
+    app: fullstack-demo
 spec:
   selector:
-    app: frontend
+    app: fullstack-demo
+    component: frontend
   ports:
     - port: 80
       targetPort: 80
-  type: ClusterIP
+  type: NodePort

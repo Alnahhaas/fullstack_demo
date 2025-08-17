@@ -1,19 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-frontend
+  name: fullstack-frontend
+  labels:
+    app: fullstack-demo
+    component: frontend
 spec:
-  replicas: {{ .Values.frontend.replicas }}
+  replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: fullstack-demo
+      component: frontend
   template:
     metadata:
       labels:
-        app: frontend
+        app: fullstack-demo
+        component: frontend
     spec:
       containers:
-        - name: frontend
-          image: "{{ .Values.frontend.image }}"
-          ports:
-            - containerPort: 80
+      - name: frontend
+        image: alnahhaas/fullstack_demo_frontend:latest
+        ports:
+        - containerPort: 80

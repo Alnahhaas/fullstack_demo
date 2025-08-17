@@ -1,10 +1,18 @@
 frontend:
   image: alnahhaas/fullstack_demo_frontend:latest
   replicas: 1
+  service:
+    type: NodePort   # Change to ClusterIP/LoadBalancer if needed
+    port: 80
+    targetPort: 80
 
 backend:
   image: alnahhaas/fullstack_demo_backend:latest
   replicas: 1
+  service:
+    type: ClusterIP
+    port: 5000
+    targetPort: 5000
 
 ingress:
   enabled: true

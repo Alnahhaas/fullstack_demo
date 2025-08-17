@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
+  name: fullstack-backend
+  labels:
+    app: fullstack-demo
 spec:
-  type: ClusterIP   # internal only
   selector:
-    app: backend
+    app: fullstack-demo
+    component: backend
   ports:
     - port: 5000
       targetPort: 5000
+  type: ClusterIP
